@@ -1,0 +1,109 @@
+<!-- Animated colourful blobs (background) -->
+<div class="blobs" aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+</div>
+
+<!-- NAVBAR -->
+<header class="nav" [class.scrolled]="scrolled()">
+  <a class="logo" href="#home">VV<span>.</span></a>
+  <button class="burger" (click)="menuOpen.set(!menuOpen())" aria-label="Toggle menu">☰</button>
+  <nav [class.open]="menuOpen()">
+    @for (l of links; track l.id) {
+      <a [href]="'#' + l.id" (click)="menuOpen.set(false)">{{ l.label }}</a>
+    }
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <p class="hello">Hey, welcome to my website 👋</p>
+    <h1>I'm <span class="gradient">{{ name }}</span></h1>
+    <h2 class="role">
+      @for (r of [roles[roleIndex()]]; track r) {
+        <span class="role-text">{{ r }}</span>
+      }
+    </h2>
+    <p class="lead">I love building for the web, turning ideas into simple, useful and beautiful experiences.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">View my work</a>
+      <a class="btn ghost" [href]="github" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+    <div class="motto">Code • Create • Learn • Repeat</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="title">About <span class="gradient">me</span></h2>
+    <div class="grid two">
+      <div class="card">
+        <h3>👨‍💻 Who am I?</h3>
+        <p>
+          I'm {{ name }}, a web development enthusiast who enjoys learning, experimenting and
+          building creative things for the web.
+        </p>
+      </div>
+      <div class="card">
+        <h3>🎯 My mission</h3>
+        <p>
+          To grow into a Full Stack Developer by building real projects, learning every day and
+          sharing my journey.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2 class="title">My creative <span class="gradient">toolbox</span></h2>
+    <div class="grid three">
+      @for (s of skills; track s.name) {
+        <article class="card skill" [style.--accent]="s.color">
+          <div class="icon">{{ s.icon }}</div>
+          <h3>{{ s.name }}</h3>
+          <p>{{ s.focus }}</p>
+        </article>
+      }
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="title">Project <span class="gradient">corner</span></h2>
+    <div class="grid three">
+      @for (p of projects; track p.title) {
+        <article class="card project">
+          <div class="icon">{{ p.icon }}</div>
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.text }}</p>
+          <div class="tags">
+            @for (t of p.tech; track t) {
+              <span>{{ t }}</span>
+            }
+          </div>
+        </article>
+      }
+    </div>
+    <p class="note">Project cards are examples. Replace them with your real repositories.</p>
+    <div class="center">
+      <a class="btn primary" [href]="github + '?tab=repositories'" target="_blank" rel="noopener">
+        Explore my repositories ↗
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="title">Let's <span class="gradient">connect</span></h2>
+    <div class="card contact">
+      <p>Always happy to learn, share and collaborate! 💬</p>
+      <a class="btn primary" [href]="github" target="_blank" rel="noopener">Follow my journey on GitHub</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© {{ year }} {{ name }} • Built with Angular 💜</p>
+</footer>

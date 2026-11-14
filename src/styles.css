@@ -1,0 +1,24 @@
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Colourful animated page background */
+  background: linear-gradient(-45deg, #1f1c2c, #3a1c71, #7928ca, #0f3460, #1f1c2c);
+  background-size: 400% 400%;
+  animation: bgShift 18s ease infinite;
+  min-height: 100vh;
+}
+
+@keyframes bgShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
